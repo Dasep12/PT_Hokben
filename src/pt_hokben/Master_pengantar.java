@@ -14,6 +14,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.util.Date;
@@ -238,13 +239,18 @@ public class Master_pengantar extends javax.swing.JFrame {
     private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
         // TODO add your handling code here:
         try {
+            File theDir = new File("C:/BackupFile/");
+                if (!theDir.exists()){
+                    theDir.mkdirs();
+                }
+            String path = "C://BackupFile//Master Pengantar.pdf" ;
             String  sql = "select * from master_pengantar " ;
             java.sql.Connection conn = (Connection)koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
             /* Step-2: Initialize PDF documents - logical objects */
             Document my_pdf_report = new Document();
-            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("D://PengantarReport.pdf"));
+            PdfWriter.getInstance(my_pdf_report, new FileOutputStream(path));
             my_pdf_report.open();
             my_pdf_report.add(new Paragraph("Laporan Master Pengantar",FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD, BaseColor.BLUE)));
             my_pdf_report.add(new Paragraph(new Date().toString()));
@@ -314,7 +320,7 @@ public class Master_pengantar extends javax.swing.JFrame {
         my_pdf_report.close();
 
         /* Close all DB related objects */
-        JOptionPane.showMessageDialog(null,"Disimpan D://PengantarReport.pdf");
+        JOptionPane.showMessageDialog(null,"Disimpan " + path);
         }catch(Exception e){
 
         }

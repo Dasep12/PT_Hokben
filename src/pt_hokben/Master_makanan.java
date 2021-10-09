@@ -199,7 +199,11 @@ public class Master_makanan extends javax.swing.JFrame {
         try {
 
             /*Nama file excell*/
-            String filename = "C:/ReportMakanan.xls" ;
+            File theDir = new File("C:/BackupFile/");
+                if (!theDir.exists()){
+                    theDir.mkdirs();
+                }
+            String filename = "C:/BackupFile/Report Makanan.xls" ;
             HSSFWorkbook workbook = new HSSFWorkbook();
 
             /*menentukan sheet*/
@@ -244,13 +248,18 @@ public class Master_makanan extends javax.swing.JFrame {
     private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
         // TODO add your handling code here:
         try {
+            File theDir = new File("C:/BackupFile/");
+                if (!theDir.exists()){
+                    theDir.mkdirs();
+                }
+                String path = "C://BackupFile//Master Makanan.pdf" ;
             String  sql = "select * from master_makanan " ;
             java.sql.Connection conn = (Connection)koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
             /* Step-2: Initialize PDF documents - logical objects */
         Document my_pdf_report = new Document();
-        PdfWriter.getInstance(my_pdf_report, new FileOutputStream("C://MakananReport.pdf"));
+        PdfWriter.getInstance(my_pdf_report, new FileOutputStream(path));
         my_pdf_report.open();            
         my_pdf_report.add(new Paragraph("Laporan Master Makanan",FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD, BaseColor.BLUE)));
         my_pdf_report.add(new Paragraph(new Date().toString()));
@@ -302,7 +311,7 @@ public class Master_makanan extends javax.swing.JFrame {
         my_pdf_report.close();
 
         /* Close all DB related objects */
-        JOptionPane.showMessageDialog(null,"Disimpan C://MakananReport.pdf");
+        JOptionPane.showMessageDialog(null,"Disimpan "+ path);
         }catch(Exception e){
             
         }

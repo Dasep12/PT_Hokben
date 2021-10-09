@@ -5,6 +5,7 @@
  */
 package pt_hokben;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
@@ -184,9 +185,12 @@ public class Master_utilitas extends javax.swing.JFrame {
     private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportActionPerformed
         // TODO add your handling code here:
         try {
-
+                File theDir = new File("C:/BackupFile/");
+                if (!theDir.exists()){
+                    theDir.mkdirs();
+                }
             /*Nama file excell*/
-            String filename = "C:/LaporanUtility.xls" ;
+            String filename = "C:/BackupFile/Laporan Pengeluaran.xls" ;
             HSSFWorkbook workbook = new HSSFWorkbook();
 
             /*menentukan sheet*/
@@ -224,7 +228,7 @@ public class Master_utilitas extends javax.swing.JFrame {
 
             /*menutup koneksi*/
             fileOut.close();
-            JOptionPane.showMessageDialog(null, "Berhasil di export di C:/LaporanUtility.xls");
+            JOptionPane.showMessageDialog(null, "Berhasil di export " + filename);
         } catch ( Exception ex ) {
             System.out.println(ex);
         }

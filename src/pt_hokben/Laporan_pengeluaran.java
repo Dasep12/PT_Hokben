@@ -15,6 +15,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
@@ -176,9 +177,12 @@ public class Laporan_pengeluaran extends javax.swing.JFrame {
     private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportActionPerformed
         // TODO add your handling code here:
         try {
-
+             File theDir = new File("C:/BackupFile/");
+                if (!theDir.exists()){
+                    theDir.mkdirs();
+                }
             /*Nama file excell*/
-            String filename = "D:/LaporanPengeluaran.xls" ;
+            String filename = "C:/BackupFile/Laporan Pengeluaran.xls" ;
             HSSFWorkbook workbook = new HSSFWorkbook();
 
             /*menentukan sheet*/
@@ -225,8 +229,12 @@ public class Laporan_pengeluaran extends javax.swing.JFrame {
     private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
         // TODO add your handling code here:
         try {
+            File theDir = new File("C:/BackupFile/");
+                if (!theDir.exists()){
+                    theDir.mkdirs();
+                }
             String  sql = "select * from master_makanan " ;
-            String path = "C://PengeluaranReport.pdf" ;
+            String path = "C://BackupFile//Laporan Pengeluaran.pdf" ;
             java.sql.Connection conn = (Connection)koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);

@@ -56,6 +56,8 @@ public class LaporanPendapatan extends javax.swing.JFrame {
         jDatePickerUtil2 = new org.jdatepicker.util.JDatePickerUtil();
         jDateComponentFactory1 = new org.jdatepicker.JDateComponentFactory();
         dateComponentFormatter4 = new org.jdatepicker.impl.DateComponentFormatter();
+        dateComponentFormatter5 = new org.jdatepicker.impl.DateComponentFormatter();
+        jDateComponentFactory2 = new org.jdatepicker.JDateComponentFactory();
         jPanel1 = new javax.swing.JPanel();
         back = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -63,11 +65,11 @@ public class LaporanPendapatan extends javax.swing.JFrame {
         pdf = new javax.swing.JButton();
         tanggal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setLayout(null);
 
         back.setText("Home");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -75,9 +77,13 @@ public class LaporanPendapatan extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
+        jPanel1.add(back);
+        back.setBounds(70, 200, 150, 40);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("LAPORAN PENDAPATAN");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(230, 10, 270, 40);
 
         export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Microsoft_Excel-01_25074.png"))); // NOI18N
         export.setText("Export excel");
@@ -86,6 +92,8 @@ public class LaporanPendapatan extends javax.swing.JFrame {
                 exportActionPerformed(evt);
             }
         });
+        jPanel1.add(export);
+        export.setBounds(69, 151, 150, 40);
 
         pdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/PDF_24287.png"))); // NOI18N
         pdf.setText("Export PDF");
@@ -94,75 +102,29 @@ public class LaporanPendapatan extends javax.swing.JFrame {
                 pdfActionPerformed(evt);
             }
         });
+        jPanel1.add(pdf);
+        pdf.setBounds(240, 150, 150, 40);
+        jPanel1.add(tanggal);
+        tanggal.setBounds(70, 110, 320, 30);
 
         jLabel2.setText("Masukan Tanggal");
-
-        jButton1.setText("Date");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(230, 230, 230)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(export, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(pdf, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(170, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2)
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(export, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pdf, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(281, Short.MAX_VALUE))
-        );
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(120, 80, 120, 14);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 3, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(738, 499));
+        setSize(new java.awt.Dimension(778, 499));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -183,7 +145,7 @@ public class LaporanPendapatan extends javax.swing.JFrame {
                 if (!theDir.exists()){
                     theDir.mkdirs();
                 }
-                String filename = "C:/BackupFile/LaporanPendapatan.xls" ;
+                String filename = "C:/BackupFile/Laporan Pendapatan.xls" ;
                 HSSFWorkbook workbook = new HSSFWorkbook();
 
                 /*menentukan sheet*/
@@ -256,90 +218,96 @@ public class LaporanPendapatan extends javax.swing.JFrame {
 
     private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
         // TODO add your handling code here:
-        try {
-            String  sql = "select * from form_transaksi " ;
+        if(tanggal.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"input tanggal");
+        }else {
+         try {
+            File theDir = new File("C:/BackupFile/");
+                if (!theDir.exists()){
+                    theDir.mkdirs();
+                }
+            String  sql = "select id_pesanan , tanggal ,nama_penerima ,nama_makanan , hrgmakanan , qty , total  "
+                            + " from form_transaksi where tanggal= '"+ tanggal.getText() +"' and status = 'Sudah Sampai' " ;
+            String  sql2 = "select count(*) as jml  from form_transaksi"
+                            + " where tanggal= '"+ tanggal.getText() +"' and status = 'Sudah Sampai' " ;
+            String  sql3 = "select sum(total) as pendapatan  from form_transaksi "
+                    + "where tanggal= '"+ tanggal.getText() +"' and status = 'Sudah Sampai'" ;
             java.sql.Connection conn = (Connection)koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
-            /* Step-2: Initialize PDF documents - logical objects */
-        Document my_pdf_report = new Document();
-        PdfWriter.getInstance(my_pdf_report, new FileOutputStream("C://TransaksiReport.pdf"));
-        my_pdf_report.open();            
-        my_pdf_report.add(new Paragraph("Laporan Transaksi",FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD, BaseColor.BLUE)));
-        my_pdf_report.add(new Paragraph(new Date().toString()));
-        my_pdf_report.add(new Paragraph("-------------------------------------------------------------------"
-                + "--------------------------------------------------------------"));
-        my_pdf_report.add(new Paragraph("\n"));
-        //we have four columns in our table
-        PdfPTable my_report_table = new PdfPTable(9);
-        //create a cell object
-        PdfPCell table_cell;
-        PdfPCell table_cell2;
-        
-        my_report_table.addCell("Kode Pesanan");
-        my_report_table.addCell("Pemesan");
-        my_report_table.addCell("No.Hp");
-        my_report_table.addCell("Alamat");
-        my_report_table.addCell("Makanan");
-        my_report_table.addCell("Pengantar");
-        my_report_table.addCell("Kendaraan");
-        my_report_table.addCell("Tanggal");
-        my_report_table.addCell("Total");
-        my_report_table.setHeaderRows(1);
-       
-        while (res.next()) {                
-            String id           = res.getString("id_pesanan");
-            table_cell          = new PdfPCell(new Phrase(id));
-            my_report_table.addCell(table_cell);
-            
-            String penerima        = res.getString("nama_penerima");
-            table_cell          = new PdfPCell(new Phrase(penerima));
-            my_report_table.addCell(table_cell);
-            
-            String nohp        = res.getString("nohp");
-            table_cell          = new PdfPCell(new Phrase(nohp));
-            my_report_table.addCell(table_cell);
-            
-            String alamat     = res.getString("alamat");
-            table_cell          = new PdfPCell(new Phrase(alamat));
-            my_report_table.addCell(table_cell);
-            
-            String makanan         = res.getString("nama_makanan");
-            table_cell          = new PdfPCell(new Phrase(makanan));
-            my_report_table.addCell(table_cell);
-            
-            String pengantar     = res.getString("nama_pengantar");
-            table_cell=new PdfPCell(new Phrase(pengantar));
-            my_report_table.addCell(table_cell);
-            
-            String kd     = res.getString("merk_kendaraan");
-            table_cell=new PdfPCell(new Phrase(kd));
-            my_report_table.addCell(table_cell);
-            
-            String tgl     = res.getString("tanggal");
-            table_cell=new PdfPCell(new Phrase(tgl));
-            my_report_table.addCell(table_cell);
-            
-            String total     = res.getString("total");
-            table_cell=new PdfPCell(new Phrase(total));
-            my_report_table.addCell(table_cell);
-            
-         }
-        /* Attach report table to PDF */
-        my_pdf_report.add(my_report_table);                       
-        my_pdf_report.close();
 
-        /* Close all DB related objects */
-        JOptionPane.showMessageDialog(null,"Disimpan C://TransaksiReport.pdf");
-        }catch(Exception e){
+            java.sql.Statement stm2 = conn.createStatement();
+            java.sql.ResultSet res2 = stm2.executeQuery(sql2);
+
+            java.sql.Statement stm3 = conn.createStatement();
+            java.sql.ResultSet res3 = stm3.executeQuery(sql3);
             
+            res2.next();
+            res3.next(); 
+                if(res2.getString(1).equals("0")){
+                   JOptionPane.showMessageDialog(null,"data tidak ada");
+                }else {
+                /* Step-2: Initialize PDF documents - logical objects */
+                    Document my_pdf_report = new Document();
+                    String path = "C://BackupFile//Laporan Pendapatan.pdf" ;
+                    PdfWriter.getInstance(my_pdf_report, new FileOutputStream(path));
+                    my_pdf_report.open();            
+                    my_pdf_report.add(new Paragraph("Laporan Pendapatan",FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD, BaseColor.BLUE)));
+                    my_pdf_report.add(new Paragraph(new Date().toString()));
+                    my_pdf_report.add(new Paragraph("-------------------------------------------------------------------"
+                            + "--------------------------------------------------------------"));
+                    my_pdf_report.add(new Paragraph("\n"));
+                    //we have four columns in our table
+                    PdfPTable my_report_table = new PdfPTable(6);
+                    //create a cell object
+                    PdfPCell table_cell;
+                    PdfPCell table_cell2;
+
+                    my_report_table.addCell("Kode Pesanan");
+                    my_report_table.addCell("Pemesan");
+                    my_report_table.addCell("Pesanan");
+                    my_report_table.addCell("QTY");
+                    my_report_table.addCell("Harga Makanan");
+                    my_report_table.addCell("Total");
+                    my_report_table.setHeaderRows(1);
+
+                    while (res.next()) {                
+                        String id           = res.getString("id_pesanan");
+                        table_cell          = new PdfPCell(new Phrase(id));
+                        my_report_table.addCell(table_cell);
+
+                        String penerima        = res.getString("nama_penerima");
+                        table_cell          = new PdfPCell(new Phrase(penerima));
+                        my_report_table.addCell(table_cell);
+
+                        String nohp        = res.getString("nama_makanan");
+                        table_cell          = new PdfPCell(new Phrase(nohp));
+                        my_report_table.addCell(table_cell);
+
+                        String alamat     = res.getString("qty");
+                        table_cell          = new PdfPCell(new Phrase(alamat));
+                        my_report_table.addCell(table_cell);
+
+                        String makanan         = res.getString("hrgmakanan");
+                        table_cell          = new PdfPCell(new Phrase(makanan));
+                        my_report_table.addCell(table_cell);
+
+                        String pengantar     = res.getString("total");
+                        table_cell=new PdfPCell(new Phrase(pengantar));
+                        my_report_table.addCell(table_cell);
+                     }
+                    /* Attach report table to PDF */
+                    my_pdf_report.add(my_report_table);                       
+                    my_pdf_report.close();
+
+                    /* Close all DB related objects */
+                    JOptionPane.showMessageDialog(null,"Disimpan " + path );
+                }
+            }catch(Exception e){
+
+            }
         }
     }//GEN-LAST:event_pdfActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,9 +369,10 @@ public class LaporanPendapatan extends javax.swing.JFrame {
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter2;
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter3;
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter4;
+    private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter5;
     private javax.swing.JButton export;
-    private javax.swing.JButton jButton1;
     private org.jdatepicker.JDateComponentFactory jDateComponentFactory1;
+    private org.jdatepicker.JDateComponentFactory jDateComponentFactory2;
     private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil1;
     private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil2;
     private javax.swing.JLabel jLabel1;

@@ -15,6 +15,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
@@ -177,9 +178,12 @@ public class LaporanPemesanan extends javax.swing.JFrame {
     private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportActionPerformed
         // TODO add your handling code here:
         try {
-
+            File theDir = new File("C:/BackupFile/");
+                if (!theDir.exists()){
+                    theDir.mkdirs();
+                }
             /*Nama file excell*/
-            String filename = "C:/LaporanPemesanan.xls" ;
+            String filename = "C:/BackupFile/Laporan Pemesanan.xls" ;
             HSSFWorkbook workbook = new HSSFWorkbook();
 
             /*menentukan sheet*/
@@ -217,7 +221,7 @@ public class LaporanPemesanan extends javax.swing.JFrame {
 
             /*menutup koneksi*/
             fileOut.close();
-            JOptionPane.showMessageDialog(null, "Berhasil di export di C:/LaporanTransaksi.xls");
+            JOptionPane.showMessageDialog(null, "Berhasil di export di " + filename);
         } catch ( Exception ex ) {
             System.out.println(ex);
         }

@@ -15,6 +15,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
@@ -166,7 +167,11 @@ public class Status_pengantaran extends javax.swing.JFrame {
     private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
         // TODO add your handling code here:
         try {
-            String path = "D://StatusPengantaranReport.pdf" ;
+            File theDir = new File("C:/BackupFile/");
+                if (!theDir.exists()){
+                    theDir.mkdirs();
+                }
+            String path = "C://BackupFile//Status Pengantaran.pdf" ;
             String  sql = "select id_pesanan , nama_penerima , alamat ,tanggal_kirim , tanggal_sampai ,  status , total  from form_transaksi " ;
             java.sql.Connection conn = (Connection)koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
