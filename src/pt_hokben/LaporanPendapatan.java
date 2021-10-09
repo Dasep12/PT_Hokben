@@ -15,6 +15,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
@@ -25,6 +26,7 @@ import java.text.SimpleDateFormat;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author dasep
@@ -47,6 +49,13 @@ public class LaporanPendapatan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dateComponentFormatter1 = new org.jdatepicker.impl.DateComponentFormatter();
+        dateComponentFormatter2 = new org.jdatepicker.impl.DateComponentFormatter();
+        dateComponentFormatter3 = new org.jdatepicker.impl.DateComponentFormatter();
+        jDatePickerUtil1 = new org.jdatepicker.util.JDatePickerUtil();
+        jDatePickerUtil2 = new org.jdatepicker.util.JDatePickerUtil();
+        jDateComponentFactory1 = new org.jdatepicker.JDateComponentFactory();
+        dateComponentFormatter4 = new org.jdatepicker.impl.DateComponentFormatter();
         jPanel1 = new javax.swing.JPanel();
         back = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -54,11 +63,11 @@ public class LaporanPendapatan extends javax.swing.JFrame {
         pdf = new javax.swing.JButton();
         tanggal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel1.setLayout(null);
 
         back.setText("Home");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -66,13 +75,9 @@ public class LaporanPendapatan extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
-        jPanel1.add(back);
-        back.setBounds(440, 150, 110, 40);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("LAPORAN PENDAPATAN");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(230, 10, 270, 40);
 
         export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Microsoft_Excel-01_25074.png"))); // NOI18N
         export.setText("Export excel");
@@ -81,8 +86,6 @@ public class LaporanPendapatan extends javax.swing.JFrame {
                 exportActionPerformed(evt);
             }
         });
-        jPanel1.add(export);
-        export.setBounds(120, 150, 150, 40);
 
         pdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/PDF_24287.png"))); // NOI18N
         pdf.setText("Export PDF");
@@ -91,20 +94,68 @@ public class LaporanPendapatan extends javax.swing.JFrame {
                 pdfActionPerformed(evt);
             }
         });
-        jPanel1.add(pdf);
-        pdf.setBounds(280, 150, 150, 40);
-        jPanel1.add(tanggal);
-        tanggal.setBounds(120, 104, 310, 30);
 
         jLabel2.setText("Masukan Tanggal");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(120, 80, 120, 16);
+
+        jButton1.setText("Date");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(230, 230, 230)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(export, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(pdf, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(170, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(export, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pdf, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(281, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,50 +173,84 @@ public class LaporanPendapatan extends javax.swing.JFrame {
 
     private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportActionPerformed
         // TODO add your handling code here:
-        try {
-
-            /*Nama file excell*/
-            String filename = "C:/LaporanPemesanan.xls" ;
-            HSSFWorkbook workbook = new HSSFWorkbook();
-
-            /*menentukan sheet*/
-            HSSFSheet sheet = workbook.createSheet("FirstSheet");
+        
+        if(tanggal.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"input tanggal");
+        }else {
             try {
-                String  sql = "select * from form_utilitas " ;
-                int i =  1 ;
-                java.sql.Connection conn = (Connection)koneksi.configDB();
-                java.sql.Statement stm = conn.createStatement();
-                java.sql.ResultSet res = stm.executeQuery(sql);
-                HSSFRow rowhead = sheet.createRow((short)0);  /*index row 0*/
-                rowhead.createCell(0).setCellValue("No");  /*column 0*/
-                rowhead.createCell(1).setCellValue("Merek Kendaraan");  /*column 1*/
-                rowhead.createCell(2).setCellValue("Bahan Bakar");  /*column 2*/
-                rowhead.createCell(3).setCellValue("Biaya Operasional");  /*column 2*/
-                rowhead.createCell(4).setCellValue("Tanggal");  /*column 2*/
-                rowhead.createCell(5).setCellValue("Keterangan");  /*column 2*/
-                while(res.next()){
-                    HSSFRow row   = sheet.createRow((short)i);   /*index row 1*/
-                    row.createCell(0).setCellValue(i);  /*column 0*/
-                    row.createCell(1).setCellValue(res.getString(2));  /* column  1*/
-                    row.createCell(2).setCellValue(res.getString(3));  /* column 2*/
-                    row.createCell(3).setCellValue(res.getString(4));  /* column 2*/
-                    row.createCell(4).setCellValue(res.getString(5));  /* column 2*/
-                    row.createCell(5).setCellValue(res.getString(6));  /* column 2*/
-                    i++ ;
+                /*Nama file excell*/
+                File theDir = new File("C:/BackupFile/");
+                if (!theDir.exists()){
+                    theDir.mkdirs();
                 }
-            }catch(Exception e){
+                String filename = "C:/BackupFile/LaporanPendapatan.xls" ;
+                HSSFWorkbook workbook = new HSSFWorkbook();
 
+                /*menentukan sheet*/
+                HSSFSheet sheet = workbook.createSheet("Laporan Pendapatan");
+                try {
+                    String  sql = "select id_pesanan , tanggal ,nama_penerima ,nama_makanan , hrgmakanan , qty , total  "
+                            + " from form_transaksi where tanggal= '"+ tanggal.getText() +"' and status = 'Sudah Sampai' " ;
+                    String  sql2 = "select count(*) as jml  from form_transaksi"
+                            + " where tanggal= '"+ tanggal.getText() +"' and status = 'Sudah Sampai' " ;
+
+                    String  sql3 = "select sum(total) as pendapatan  from form_transaksi "
+                            + "where tanggal= '"+ tanggal.getText() +"' and status = 'Sudah Sampai'" ;
+
+                   // String sql2 = "Select count as total from form transaksi  where tanggal='"+ tanggal.getText() + "'" ;
+                    int i =  1 ;
+                    java.sql.Connection conn = (Connection)koneksi.configDB();
+                    java.sql.Statement stm = conn.createStatement();
+                    java.sql.ResultSet res = stm.executeQuery(sql);
+
+                    java.sql.Statement stm2 = conn.createStatement();
+                    java.sql.ResultSet res2 = stm2.executeQuery(sql2);
+
+                    java.sql.Statement stm3 = conn.createStatement();
+                    java.sql.ResultSet res3 = stm3.executeQuery(sql3);
+
+                    res2.next();
+                    res3.next();
+
+                    if(res2.getString(1).equals("0")){
+                         JOptionPane.showMessageDialog(null ,"tidak ada data");
+                    }else {
+                        HSSFRow rowhead = sheet.createRow((short)0);  /*index row 0*/
+                        rowhead.createCell(0).setCellValue("ID Pesanan");  /*column 0*/
+                        rowhead.createCell(1).setCellValue("Tanggal");  /*column 1*/
+                        rowhead.createCell(2).setCellValue("Pemesan");  /*column 2*/
+                        rowhead.createCell(3).setCellValue("Pesanan");  /*column 3*/
+                        rowhead.createCell(4).setCellValue("Harga Makanan");  /*column 4*/
+                        rowhead.createCell(5).setCellValue("QTY");  /*column 5*/
+                        rowhead.createCell(6).setCellValue("Total");  /*column 6*/
+                            while(res.next()){
+                                HSSFRow row   = sheet.createRow((short)i);   /*index row 1*/
+                                row.createCell(0).setCellValue(res.getString(1));  /*column 0*/
+                                row.createCell(1).setCellValue(res.getString(2));  /* column  1*/
+                                row.createCell(2).setCellValue(res.getString(3));  /* column 2*/
+                                row.createCell(3).setCellValue(res.getString(4));  /* column 3*/
+                                row.createCell(4).setCellValue(res.getString(5));  /* column 4*/
+                                row.createCell(5).setCellValue(res.getString(6));  /* column 5*/
+                                row.createCell(6).setCellValue(res.getString(7));  /* column 6*/
+                                i++ ;
+                            }
+                                int a = Integer.parseInt(res2.getString(1));
+                                HSSFRow rowFooter   = sheet.createRow((short) a + 1 );   /*index row 1*/
+                                rowFooter.createCell(5).setCellValue("Total Pendapatan");  /* column 6*/
+                                rowFooter.createCell(6).setCellValue(res3.getString(1));  /* column 6*/
+                                FileOutputStream fileOut = new FileOutputStream(filename);
+                                /*menulis file*/
+                                workbook.write(fileOut);
+                                /*menutup koneksi*/
+                                fileOut.close();
+                                JOptionPane.showMessageDialog(null, "Berhasil di export "  + filename);
+                    }
+                }catch(Exception e){
+                    System.out.println(e);
+                }
+            } catch ( Exception ex ) {
+                System.out.println(ex);
             }
-            FileOutputStream fileOut = new FileOutputStream(filename);
-
-            /*menulis file*/
-            workbook.write(fileOut);
-
-            /*menutup koneksi*/
-            fileOut.close();
-            JOptionPane.showMessageDialog(null, "Berhasil di export di C:/LaporanTransaksi.xls");
-        } catch ( Exception ex ) {
-            System.out.println(ex);
         }
     }//GEN-LAST:event_exportActionPerformed
 
@@ -251,6 +336,11 @@ public class LaporanPendapatan extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pdfActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -307,7 +397,15 @@ public class LaporanPendapatan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
+    private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter1;
+    private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter2;
+    private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter3;
+    private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter4;
     private javax.swing.JButton export;
+    private javax.swing.JButton jButton1;
+    private org.jdatepicker.JDateComponentFactory jDateComponentFactory1;
+    private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil1;
+    private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
