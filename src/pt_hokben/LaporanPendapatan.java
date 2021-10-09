@@ -59,16 +59,21 @@ public class LaporanPendapatan extends javax.swing.JFrame {
         dateComponentFormatter4 = new org.jdatepicker.impl.DateComponentFormatter();
         dateComponentFormatter5 = new org.jdatepicker.impl.DateComponentFormatter();
         jDateComponentFactory2 = new org.jdatepicker.JDateComponentFactory();
+        jDatePickerUtil3 = new org.jdatepicker.util.JDatePickerUtil();
+        sqlDateModel1 = new org.jdatepicker.impl.SqlDateModel();
+        dateComponentFormatter6 = new org.jdatepicker.impl.DateComponentFormatter();
+        dateChooserDialog1 = new datechooser.beans.DateChooserDialog();
+        dateChooserDialog2 = new datechooser.beans.DateChooserDialog();
+        dateChooserDialog3 = new datechooser.beans.DateChooserDialog();
+        dateChooserDialog4 = new datechooser.beans.DateChooserDialog();
         jPanel1 = new javax.swing.JPanel();
         back = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         export = new javax.swing.JButton();
         pdf = new javax.swing.JButton();
-        tanggal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         jButton1 = new javax.swing.JButton();
-        jDayChooser1 = new com.toedter.calendar.JDayChooser();
+        tanggal = new datechooser.beans.DateChooserCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,7 +87,7 @@ public class LaporanPendapatan extends javax.swing.JFrame {
             }
         });
         jPanel1.add(back);
-        back.setBounds(70, 200, 150, 40);
+        back.setBounds(270, 210, 150, 40);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("LAPORAN PENDAPATAN");
@@ -97,7 +102,7 @@ public class LaporanPendapatan extends javax.swing.JFrame {
             }
         });
         jPanel1.add(export);
-        export.setBounds(69, 151, 150, 40);
+        export.setBounds(190, 160, 150, 40);
 
         pdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/PDF_24287.png"))); // NOI18N
         pdf.setText("Export PDF");
@@ -107,15 +112,11 @@ public class LaporanPendapatan extends javax.swing.JFrame {
             }
         });
         jPanel1.add(pdf);
-        pdf.setBounds(240, 150, 150, 40);
-        jPanel1.add(tanggal);
-        tanggal.setBounds(70, 110, 320, 30);
+        pdf.setBounds(350, 160, 150, 40);
 
         jLabel2.setText("Masukan Tanggal");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(120, 80, 120, 14);
-        jPanel1.add(jCalendar1);
-        jCalendar1.setBounds(410, 110, 350, 230);
+        jLabel2.setBounds(190, 90, 120, 14);
 
         jButton1.setText("Pilih Tanggal");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -124,21 +125,22 @@ public class LaporanPendapatan extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(410, 350, 110, 23);
-        jPanel1.add(jDayChooser1);
-        jDayChooser1.setBounds(50, 290, 196, 133);
+        jButton1.setBounds(410, 270, 110, 23);
+
+        tanggal.setCalendarPreferredSize(new java.awt.Dimension(350, 250));
+        tanggal.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_PERIOD);
+        jPanel1.add(tanggal);
+        tanggal.setBounds(190, 110, 300, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(778, 499));
@@ -329,8 +331,10 @@ public class LaporanPendapatan extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
        
-        
-        
+        String tgl =  tanggal.getText();
+        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-mm-dd");
+        JOptionPane.showMessageDialog(null,dt1.format(tgl));
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -389,24 +393,29 @@ public class LaporanPendapatan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
+    private datechooser.beans.DateChooserDialog dateChooserDialog1;
+    private datechooser.beans.DateChooserDialog dateChooserDialog2;
+    private datechooser.beans.DateChooserDialog dateChooserDialog3;
+    private datechooser.beans.DateChooserDialog dateChooserDialog4;
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter1;
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter2;
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter3;
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter4;
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter5;
+    private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter6;
     private javax.swing.JButton export;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JCalendar jCalendar1;
     private org.jdatepicker.JDateComponentFactory jDateComponentFactory1;
     private org.jdatepicker.JDateComponentFactory jDateComponentFactory2;
     private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil1;
     private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil2;
-    private com.toedter.calendar.JDayChooser jDayChooser1;
+    private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton pdf;
-    private javax.swing.JTextField tanggal;
+    private org.jdatepicker.impl.SqlDateModel sqlDateModel1;
+    private datechooser.beans.DateChooserCombo tanggal;
     // End of variables declaration//GEN-END:variables
 
 }
