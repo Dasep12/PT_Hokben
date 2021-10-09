@@ -20,13 +20,14 @@ import java.io.FileOutputStream;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import java.util.Date;  
 import java.text.DateFormat;  
 import java.text.SimpleDateFormat;  
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 /**
  *
  * @author dasep
@@ -65,6 +66,9 @@ public class LaporanPendapatan extends javax.swing.JFrame {
         pdf = new javax.swing.JButton();
         tanggal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jButton1 = new javax.swing.JButton();
+        jDayChooser1 = new com.toedter.calendar.JDayChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,6 +114,19 @@ public class LaporanPendapatan extends javax.swing.JFrame {
         jLabel2.setText("Masukan Tanggal");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(120, 80, 120, 14);
+        jPanel1.add(jCalendar1);
+        jCalendar1.setBounds(410, 110, 350, 230);
+
+        jButton1.setText("Pilih Tanggal");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(410, 350, 110, 23);
+        jPanel1.add(jDayChooser1);
+        jDayChooser1.setBounds(50, 290, 196, 133);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -309,6 +326,13 @@ public class LaporanPendapatan extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pdfActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+       
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -371,10 +395,13 @@ public class LaporanPendapatan extends javax.swing.JFrame {
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter4;
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter5;
     private javax.swing.JButton export;
+    private javax.swing.JButton jButton1;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private org.jdatepicker.JDateComponentFactory jDateComponentFactory1;
     private org.jdatepicker.JDateComponentFactory jDateComponentFactory2;
     private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil1;
     private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil2;
+    private com.toedter.calendar.JDayChooser jDayChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

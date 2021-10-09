@@ -203,7 +203,7 @@ public class Master_makanan extends javax.swing.JFrame {
                 if (!theDir.exists()){
                     theDir.mkdirs();
                 }
-            String filename = "C:/BackupFile/Report Makanan.xls" ;
+            String filename = "C:/BackupFile/Master Makanan.xls" ;
             HSSFWorkbook workbook = new HSSFWorkbook();
 
             /*menentukan sheet*/
@@ -239,7 +239,7 @@ public class Master_makanan extends javax.swing.JFrame {
 
             /*menutup koneksi*/
             fileOut.close();
-            JOptionPane.showMessageDialog(null, "Berhasil di export di C:/ReportMakanan.xls");
+            JOptionPane.showMessageDialog(null, "Berhasil di export di " + filename);
         } catch ( Exception ex ) {
             System.out.println(ex);
         }

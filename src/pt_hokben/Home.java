@@ -49,6 +49,7 @@ public class Home extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         statusPengantar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,7 +63,7 @@ public class Home extends javax.swing.JFrame {
         adm.setForeground(new java.awt.Color(255, 255, 255));
         adm.setText("Admin");
         jPanel2.add(adm);
-        adm.setBounds(310, 10, 190, 28);
+        adm.setBounds(310, 10, 190, 29);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,11 +79,11 @@ public class Home extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Selamat Datang");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(140, 10, 190, 28);
+        jLabel4.setBounds(140, 10, 190, 29);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/background-hitam-kuning.jpg"))); // NOI18N
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(10, 0, 1170, 110);
+        jLabel3.setBounds(-50, 10, 1170, 110);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(-10, 0, 1030, 110);
@@ -150,10 +151,9 @@ public class Home extends javax.swing.JFrame {
             }
         });
         getContentPane().add(utilitas);
-        utilitas.setBounds(830, 110, 117, 40);
+        utilitas.setBounds(830, 110, 121, 40);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 530, 1040, 20);
 
@@ -169,7 +169,6 @@ public class Home extends javax.swing.JFrame {
         user.setBounds(940, 110, 90, 40);
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("DELIVERY SYSTEM ");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(410, 340, 620, 56);
@@ -179,6 +178,17 @@ public class Home extends javax.swing.JFrame {
         jLabel7.setBounds(80, 210, 250, 300);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setText("Pendapatan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 40));
+
         getContentPane().add(jPanel3);
         jPanel3.setBounds(0, 150, 1150, 380);
 
@@ -244,6 +254,12 @@ public class Home extends javax.swing.JFrame {
         a.setVisible(true);
     }//GEN-LAST:event_statusPengantarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        LaporanPendapatan a = new LaporanPendapatan();
+        a.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -285,6 +301,7 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adm;
     private javax.swing.JButton biaya;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
