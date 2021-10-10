@@ -550,12 +550,20 @@ public class aksitrans extends javax.swing.JFrame {
         return myDateObj.format(myFormatObj) ;
     }
      
+     public String Tgl2(){
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd/MM/yy");
+       // String formattedDate = myDateObj.format(myFormatObj);
+        return myDateObj.format(myFormatObj) ;
+     }
+     
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
         aksitrans tgl = new aksitrans();
         
         String tanggal    = tgl.getTanggal() ;
         String tgl_kirim  = tgl.dateTime();
+        String TGL2       = tgl.Tgl2();
         String makanan    = (String) listMakanan.getSelectedItem();
         String pengantar  = (String) listPengantar.getSelectedItem();
         String kendaraan  = (String) listKendaraan.getSelectedItem();
@@ -577,15 +585,16 @@ public class aksitrans extends javax.swing.JFrame {
                 String sql = "INSERT INTO  form_transaksi ("
                         + " id_pesanan , nama_penerima , alamat , "
                         + " nama_makanan , nama_pengantar , merk_kendaraan , status , tanggal  , "
-                        + " hrgmakanan , jarak , biayakirim , qty , total  , tanggal_kirim   ) values "
+                        + " hrgmakanan , jarak , biayakirim , qty , total  , tanggal_kirim  , tgl2  ) values "
                         + "('"+ idTransaksi.getText() +"' , '"+ nama.getText() +"' , '"+ alamat.getText() +"' , "
                         + "'"+ makanan +"' , '"+ pengantar +"' , '"+ kendaraan  +"' , '"+ status.getSelectedItem()  +"' "
                         + ", '"+ tanggal  +"' , '"+ harga_makan.getText()  +"'"
                         + ", '"+ jarak.getSelectedItem()  +"' ,"
                         + "  '"+ harga_jarak.getText()  +"'  , "
                         + "  '"+ qty.getText()  +"'  , "
-                        + "  '"+  hasil  +"' ,  " 
-                        + "  '"+  tgl_kirim  + "' ) " ;
+                        + "  '"+  hasil  +"' ,  "  
+                        + "  '"+  tgl_kirim  +"' ,  " 
+                        + "  '"+  TGL2  + "' ) " ;
                   java.sql.Connection conn = (Connection)koneksi.configDB();
                   java.sql.PreparedStatement pst = conn.prepareStatement(sql);
                   pst.execute();

@@ -66,13 +66,13 @@ public class LaporanPendapatan extends javax.swing.JFrame {
         dateChooserDialog2 = new datechooser.beans.DateChooserDialog();
         dateChooserDialog3 = new datechooser.beans.DateChooserDialog();
         dateChooserDialog4 = new datechooser.beans.DateChooserDialog();
+        jDatePickerUtil4 = new org.jdatepicker.util.JDatePickerUtil();
         jPanel1 = new javax.swing.JPanel();
         back = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         export = new javax.swing.JButton();
         pdf = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         tanggal = new datechooser.beans.DateChooserCombo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,17 +118,10 @@ public class LaporanPendapatan extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(190, 90, 120, 14);
 
-        jButton1.setText("Pilih Tanggal");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(410, 270, 110, 23);
-
         tanggal.setCalendarPreferredSize(new java.awt.Dimension(350, 250));
+        tanggal.setLocale(new java.util.Locale("in", "ID", ""));
         tanggal.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_PERIOD);
+        tanggal.setShowOneMonth(true);
         jPanel1.add(tanggal);
         tanggal.setBounds(190, 110, 300, 30);
 
@@ -171,12 +164,12 @@ public class LaporanPendapatan extends javax.swing.JFrame {
                 HSSFSheet sheet = workbook.createSheet("Laporan Pendapatan");
                 try {
                     String  sql = "select id_pesanan , tanggal ,nama_penerima ,nama_makanan , hrgmakanan , qty , total  "
-                            + " from form_transaksi where tanggal= '"+ tanggal.getText() +"' and status = 'Sudah Sampai' " ;
+                            + " from form_transaksi where tgl2= '"+ tanggal.getText() +"' and status = 'Sudah Sampai' " ;
                     String  sql2 = "select count(*) as jml  from form_transaksi"
-                            + " where tanggal= '"+ tanggal.getText() +"' and status = 'Sudah Sampai' " ;
+                            + " where tgl2= '"+ tanggal.getText() +"' and status = 'Sudah Sampai' " ;
 
                     String  sql3 = "select sum(total) as pendapatan  from form_transaksi "
-                            + "where tanggal= '"+ tanggal.getText() +"' and status = 'Sudah Sampai'" ;
+                            + "where tgl2= '"+ tanggal.getText() +"' and status = 'Sudah Sampai'" ;
 
                    // String sql2 = "Select count as total from form transaksi  where tanggal='"+ tanggal.getText() + "'" ;
                     int i =  1 ;
@@ -246,11 +239,11 @@ public class LaporanPendapatan extends javax.swing.JFrame {
                     theDir.mkdirs();
                 }
             String  sql = "select id_pesanan , tanggal ,nama_penerima ,nama_makanan , hrgmakanan , qty , total  "
-                            + " from form_transaksi where tanggal= '"+ tanggal.getText() +"' and status = 'Sudah Sampai' " ;
+                            + " from form_transaksi where tgl2= '"+ tanggal.getText() +"' and status = 'Sudah Sampai' " ;
             String  sql2 = "select count(*) as jml  from form_transaksi"
-                            + " where tanggal= '"+ tanggal.getText() +"' and status = 'Sudah Sampai' " ;
+                            + " where tgl2= '"+ tanggal.getText() +"' and status = 'Sudah Sampai' " ;
             String  sql3 = "select sum(total) as pendapatan  from form_transaksi "
-                    + "where tanggal= '"+ tanggal.getText() +"' and status = 'Sudah Sampai'" ;
+                    + "where tgl2= '"+ tanggal.getText() +"' and status = 'Sudah Sampai'" ;
             java.sql.Connection conn = (Connection)koneksi.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
@@ -328,15 +321,6 @@ public class LaporanPendapatan extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pdfActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-       
-        String tgl =  tanggal.getText();
-        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-mm-dd");
-        JOptionPane.showMessageDialog(null,dt1.format(tgl));
-      
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -404,12 +388,12 @@ public class LaporanPendapatan extends javax.swing.JFrame {
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter5;
     private org.jdatepicker.impl.DateComponentFormatter dateComponentFormatter6;
     private javax.swing.JButton export;
-    private javax.swing.JButton jButton1;
     private org.jdatepicker.JDateComponentFactory jDateComponentFactory1;
     private org.jdatepicker.JDateComponentFactory jDateComponentFactory2;
     private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil1;
     private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil2;
     private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil3;
+    private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
